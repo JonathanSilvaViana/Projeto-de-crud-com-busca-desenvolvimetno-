@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Cadastro de Produtos</string>
+    <string name="action_sair">Sair</string>
+    <string name="hint_pesquisa">Digite um produto</string>
+    <string-array name="planets_array">
+        <item>Earth</item>
+        <item>Jupiter</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Mars</item>
+    </string-array>
+</resources>
