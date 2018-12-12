@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,9 +33,9 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements CustomAdapterProduto.OnProdutoListener {
+public class MainActivity extends AppCompatActivity implements CustomAdapterRecycler.OnProdutoListener {
 
-    private CustomAdapterProduto mAdapter;
+    private CustomAdapterRecycler mAdapter;
 
     Button bt_viewBusca;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapterProd
 
     DatabaseHelper DB_methods;
 
-    ListView listaPrincipal;
+    RecyclerView listaPrincipal;
     String[] listados_fake;
 
     ArrayAdapter<String> adaptadorFake;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapterProd
         });
 
 
-        listaPrincipal = (ListView) findViewById(R.id._dynamic);
+        listaPrincipal = (RecyclerView) findViewById(R.id.recyclerview);
 
         listados_fake = getResources().getStringArray(R.array.planets_array);
 
@@ -116,23 +117,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapterProd
 
         BarraDebusca = (SearchView) findViewById(R.id.barradebusca);
 
-        //instancia o botão de realizar busca
 
-        bt_viewBusca = (Button) findViewById(R.id.bt_FazBusca);
-
-        bt_viewBusca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //aqui seria a busca que manda a outra activity
-                String valor_fornecido = BarraDebusca.getQuery().toString();
-
-                //DB_methods.QuerySearchNomeDeProduto(valor_fornecido);
-
-                //BarraDebusca.addTextChangedListener
-
-
-            }
-        });
 
 
         //zzz
@@ -192,9 +177,12 @@ public class MainActivity extends AppCompatActivity implements CustomAdapterProd
             //teste de valores incubados
            // Toast.makeText(this, "ver: " + listId + " " + listData + " " + listQTD,  Toast.LENGTH_SHORT).show();
 
+
+
+
         }
 
-        mAdapter = new CustomAdapterProduto(produtos, this,this);
+        mAdapter = new CustomAdapterRecycler(produtos, this, this);
 
 
         listaPrincipal.setAdapter(mAdapter);
