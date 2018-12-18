@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapterRecy
         {
             case R.id.action_sair:
                 Toast.makeText(this, "encerrado", Toast.LENGTH_LONG).show();
-                System.exit(1);
+                //System.exit(0);
                 finish();
         }
 

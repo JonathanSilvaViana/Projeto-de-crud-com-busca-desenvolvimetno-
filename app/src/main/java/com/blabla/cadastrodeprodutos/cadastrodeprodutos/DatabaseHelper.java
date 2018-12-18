@@ -189,13 +189,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                        " WHERE " +
                        CAMPO_NOME_PRODUTO +
                        " LIKE " +
-                       " '%" + produtoParaBuscar + "%'";
+                       " ? ";
                Log.d("Buscado" , ":" + query);
                Log.d("Busca realizada" , " do produto: " + produtoParaBuscar);
                //Log.e("Erro de busca..." , "Erro durante a busca:" + produtoParaBuscar + "falha na query: " + query);
                //db.execSQL(query);
-
-                Cursor data = db.rawQuery(query , null);
+                Cursor data = db.rawQuery(query , new String[] { "%" + produtoParaBuscar + "%" });
                 //db.close();
                return data;
 
